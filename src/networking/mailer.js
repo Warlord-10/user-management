@@ -2,10 +2,12 @@ import nodemailer from "nodemailer"
 import User from "@/models/User"
 import { hash } from "bcrypt"
 import { NextResponse } from "next/server"
+import dbConnect from "@/utils/mongodb";
 
 
 export async function sendEmail({ email, emailType, userId }) {
     try {
+        await dbConnect();
         const hashedToken = await hash(userId.toString(), 10)
 
         if (emailType === "VERIFY") {
