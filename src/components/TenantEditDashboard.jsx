@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { toast } from "sonner";
 import { useSession } from 'next-auth/react';
+import { hasGlobalAccess } from '@/lib/getGlobalRole';
 
 
 function TenantEditDashboard({ tenantData }) {
@@ -46,11 +47,7 @@ function TenantEditDashboard({ tenantData }) {
     // To delete a tenant 
     async function deleteTenant() {
         try {
-            if (
-                (tenantData.owner != session?.data.user._id)
-                || (!session?.data.isAdmin)
-                || (!session?.data.isOwner)
-            ) {
+            if(tenantData.owner != session?.data.user._id && !(await hasGlobalAccess())){
                 throw new Error("Only owner can delete the tenant")
             }
 

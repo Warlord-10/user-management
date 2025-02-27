@@ -10,7 +10,6 @@ const fetchTenantDetails = async(tenantId) => {
         return respone;
 
     } catch (error) {
-        console.log(error)
     }
 }
 

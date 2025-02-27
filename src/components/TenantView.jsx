@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import NewTenantForm from '@/components/NewTenantForm'
 import { getSession } from 'next-auth/react'
 import { toast } from 'sonner'
 import TenantCard from './TenantCard'
@@ -62,7 +61,6 @@ function TenantView() {
     // It will return the tenant and the role the user has in that tenant
     useEffect(() => {
         const fetchTenants = async () => {
-            console.log("fetching tenants")
             const session = await getSession()
 
             const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL + `/api/user/${session?.user._id}/tenants`, {
@@ -73,7 +71,6 @@ function TenantView() {
                 credentials: 'include',
             })
             const data = await res.json()
-            console.log("heheh",data)
             setTenants(data)
         }
         fetchTenants()

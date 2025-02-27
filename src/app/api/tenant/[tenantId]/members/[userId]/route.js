@@ -11,7 +11,6 @@ export async function GET(req, {params}){
         
         return NextResponse.json(response)
     } catch (error) {
-        console.log(error)
         return NextResponse.error(error)
     }
 }
@@ -28,7 +27,6 @@ export async function PUT(req, {params}){
 
         return NextResponse.json(response)
     } catch (error) {
-        console.log(error)
         return NextResponse.error(error)
     }
 }
@@ -42,7 +40,6 @@ export async function DELETE(req, {params}){
 
         return NextResponse.json(response)
     } catch (error) {
-        console.log(error)
         return NextResponse.error(error)
     }
 }

@@ -22,7 +22,6 @@ export async function GET(req){
             return NextResponse.json(allTenants.length)
         }
     } catch (error) {
-        console.log(error)
         return NextResponse.error(error)
     }
 }

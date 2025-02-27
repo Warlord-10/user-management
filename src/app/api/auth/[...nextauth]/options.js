@@ -83,7 +83,6 @@ export const authOptions = {
                     token._id = userData._id;
                     token.isSuperUser = userData?.isSuperUser;
                     token.isAdmin = userData?.isAdmin;
-                    console.log("jwt function: ", userData, token)
                 }
             }
             return token;
@@ -92,7 +91,6 @@ export const authOptions = {
             session.user._id = token._id;
             session.isSuperUser = token?.isSuperUser;
             session.isAdmin = token?.isAdmin
-            console.log("session function: ", session)
             return session;
         }
     }

@@ -9,7 +9,6 @@ import { hash } from "bcrypt";
 export async function GET(req){
     try {
         const searchParams = req.nextUrl.searchParams
-        console.log(searchParams.get("email"), searchParams.get("id"))
 
         const res = await sendEmail({
             email: searchParams.get("email"),
@@ -56,7 +55,6 @@ export async function POST(req){
         }, {status: 200})
 
     } catch (error) {
-        console.log(error)
         return NextResponse.error(error)
     }
 }

@@ -87,7 +87,6 @@ function SearchUser() {
                     setPermission(data.role);
                 }
             } catch (error) {
-                console.log(error)
             }
         }
 

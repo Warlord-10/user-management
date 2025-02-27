@@ -11,6 +11,7 @@ async function Navbar() {
     const permission = () => {
         if (session?.isSuperUser) return "SuperUser"
         if (session?.isAdmin) return "Admin"
+        return null
     }
 
     const initials = (name) => {
@@ -28,9 +29,11 @@ async function Navbar() {
                                 <div className='flex text-xl font-bold rounded-full bg-blue-100 text-blue-600 h-10 w-10 items-center justify-center'>
                                     {initials(session?.user.name)}
                                 </div>
-                                <div className='text-lg font-semibold text-gray-900'>
-                                    {permission()} Console
-                                </div>
+                                {permission() && (
+                                    <div className='text-sm font-semibold text-gray-900'>
+                                        {permission()} Console
+                                    </div>
+                                )}
                             </div>
                         )}
                     </div>
@@ -41,6 +44,14 @@ async function Navbar() {
                                 className='px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors'
                             >
                                 Dashboard
+                            </Link>
+                        )}
+                        {session?.isSuperUser && (
+                            <Link
+                                href="/dashboard/admins"
+                                className='px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors'
+                            >
+                                Admins
                             </Link>
                         )}
                         <Link

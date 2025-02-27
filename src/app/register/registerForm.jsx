@@ -22,7 +22,6 @@ function RegisterForm() {
             })
     
             if(response.ok){
-                console.log("verify your email first")
                 setSignupResponse(<div className='text-green-500'>Verification email sent</div>)
             } else{
                 throw new Error('Registration failed');
